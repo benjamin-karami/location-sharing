@@ -2,17 +2,7 @@ import { Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
 import { useMapStore } from '@/store';
 import { useLayoutEffect, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-
-type MarkerT = {
-  id: number;
-  lat: number;
-  lng: number;
-  title: string;
-};
-type LocationMarkerT = {
-  multiMarker: boolean;
-  shouldGetLocation: boolean;
-};
+import { LocationMarkerT, MarkerT } from '@/types';
 
 export function LocationMarker({
   multiMarker,
@@ -63,7 +53,7 @@ export function LocationMarker({
     router.push(`/location/edit/${marker.id}`);
   };
 
-  if (!markers.length && multiMarker) return null;  
+  if (!markers.length && multiMarker) return null;
 
   return !multiMarker ? (
     <Marker

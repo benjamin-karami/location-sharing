@@ -1,25 +1,6 @@
 import { create } from 'zustand';
-import { LatLngExpression } from 'leaflet';
+import { MapStoreT, MarkerT, SelectedPositionT } from '@/types';
 // in here we can add a Async fetch to get markers from api for userId but here we have it hard coded
-
-type MarkerT = {
-  id: number;
-  lat: number;
-  lng: number;
-  title: string;
-  locationType: string;
-};
-type SelectedPositionT = {
-  lat: number;
-  lng: number;
-};
-type MapStoreT = {
-  markers: MarkerT[];
-  selectedPosition: LatLngExpression;
-  addMarker: (marker: MarkerT) => void;
-  editMarker: (marker: MarkerT) => void;
-  setSelectedPosition: (position: SelectedPositionT) => void;
-};
 
 export const useMapStore = create<MapStoreT>((set) => ({
   markers: [
@@ -44,9 +25,8 @@ export const useMapStore = create<MapStoreT>((set) => ({
       title: 'Office',
       locationType: 'business2',
     },
-     
   ],
-  selectedPosition: { lat: 32.36346037994745, lng: 51.7879223678633, },
+  selectedPosition: { lat: 32.36346037994745, lng: 51.7879223678633 },
   addMarker: (marker: MarkerT) => {
     set((state) => ({ markers: [...state.markers, marker] }));
   },

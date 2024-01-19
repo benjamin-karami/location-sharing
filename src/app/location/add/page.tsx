@@ -2,7 +2,6 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import L from 'leaflet';
 import { z } from 'zod';
 import { useMemo } from 'react';
 import dynamic from 'next/dynamic';
