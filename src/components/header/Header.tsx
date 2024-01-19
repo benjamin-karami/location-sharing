@@ -15,7 +15,6 @@ export default function Header() {
           <div className='space-x-4'>
             {navs.map((nav) => (
               <Link
-                prefetch
                 className={nav.route === pathname ? 'text-primary-600' : ''}
                 key={`nav-${nav.id}`}
                 href={nav.route}
