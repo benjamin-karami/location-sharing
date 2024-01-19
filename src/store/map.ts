@@ -37,8 +37,16 @@ export const useMapStore = create<MapStoreT>((set) => ({
       title: 'Restaurant',
       locationType: 'business2',
     },
+    {
+      id: 3,
+      lat: 60.931615076760906,
+      lng: 9.336751385547577,
+      title: 'Office',
+      locationType: 'business2',
+    },
+     
   ],
-  selectedPosition: { lat: -32.26488999395303, lng: 27.654732119907855 },
+  selectedPosition: { lat: 32.36346037994745, lng: 51.7879223678633, },
   addMarker: (marker: MarkerT) => {
     set((state) => ({ markers: [...state.markers, marker] }));
   },

@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import L from 'leaflet';
 import { z } from 'zod';
 import { useMemo } from 'react';
 import dynamic from 'next/dynamic';
@@ -47,6 +48,7 @@ export default function AddLocation() {
     try {
       // Promise is for making a realistic API call because I don't have any API
       await new Promise((resolve) => setTimeout(resolve, 1000));
+
       if ('lat' in selectedPosition) {
         addMarker({
           title: data.title,

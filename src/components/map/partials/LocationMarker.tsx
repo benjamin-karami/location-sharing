@@ -1,4 +1,4 @@
-import { Marker, Popup, useMap } from 'react-leaflet';
+import { Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
 import { useMapStore } from '@/store';
 import { useLayoutEffect, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
@@ -37,6 +37,12 @@ export function LocationMarker({
     [],
   );
 
+  const mapEvents = useMapEvents({
+    click: (e) => {
+      setPosition(e.latlng);
+    },
+  });
+
   useLayoutEffect(() => {
     // @ts-ignore
     const onLocationFound = (e) => {
@@ -57,7 +63,7 @@ export function LocationMarker({
     router.push(`/location/edit/${marker.id}`);
   };
 
-  if (!markers.length && multiMarker) return null;
+  if (!markers.length && multiMarker) return null;  
 
   return !multiMarker ? (
     <Marker
@@ -68,7 +74,7 @@ export function LocationMarker({
     />
   ) : (
     markers.map((marker: MarkerT) => (
-      <Marker key={marker.id} position={[marker.lat, marker.lng]}>
+      <Marker key={`marker-${marker.id}`} position={[marker.lat, marker.lng]}>
         <Popup>
           <div>
             <div className='p-2 text-amber-50 bg-green-400 w-[150px] text-center'>
