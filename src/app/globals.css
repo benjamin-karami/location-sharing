@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {}
+
+button,
+button[type="submit"] {
+    @apply rounded-md bg-gradient-to-r from-primary-500 to-secondary-600 px-6 py-2 text-black hover:opacity-50;
+}
+
+button:disabled,
+button[type="submit"]:disabled {
+    @apply opacity-50;
+}
+
+input[type="text"] {
+    @apply rounded-md border border-gray-200 py-2 px-3 outline-none  focus:border-primary-500;
+}
+
+.form {
+    @apply flex flex-col px-4 py-2;
+}
+
+.form-shorts {
+    @apply flex flex-col px-8 py-4;
+}
